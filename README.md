@@ -5,13 +5,13 @@ Config files for a minimalist X desktop; i3wm & lemonbar, rxvt, bitlbee & weecha
 
  - [bookercodes/dotfiles](https://github.com/bookercodes/dotfiles)
 
- - [electro7/dotfiles]((https://github.com/electro7/dotfiles)
+ - [electro7/dotfiles](https://github.com/electro7/dotfiles)
 
  - [ktmud/bing-wallpaper](https://github.com/ktmud/bing-wallpaper)
 
 ## i3
 
-![lemonbar full](https://av.mooo.info/nextcloud/index.php/s/8T6v2dwpFa61AW3)
+![lemonbar full](https://av.mooo.info/nextcloud/index.php/s/8T6v2dwpFa61AW3/download)
 
 Lemonbar config files and help [here](https://github.com/ashwinvis/i3/tree/master/.i3/lemonbar)
 
