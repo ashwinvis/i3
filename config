@@ -1,0 +1,291 @@
+# This file has been auto-gen/rated by i3-config-wizard(1).
+# It will not be overwritten, so edit it as you like.
+#
+# Should you change your keyboard layout some time, delete
+# this file and re-run i3-config-wizard(1).
+#
+
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+# font pango:monospace 8
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+# font pango:Meslo LG S for Powerline 9
+font pango: Source Sans Pro 9
+# xrandr --dpi 192
+
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn’t scale on retina/hidpi displays.
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+# floating_maximum_size 3200 x 1800
+floating_maximum_size -1 x -1
+
+# start a terminal
+bindsym $mod+Return exec urxvt && cwd
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+# bindsym $mod+d exec dmenu_run -i -b -p '#!' -fn 'DejaVu Sans Mono for Powerline 8'
+bindsym $mod+d exec rofi -show drun 
+bindsym $mod+Alt+d exec rofi -show drun 
+# dmenu_run -i -b -p 'Arch Linux' -fn 'Oxygen Sans:pixelsize=28' -nb '#fdf6e3' -nf '#586c75' -sf '#fdf6e3' -sb '#b58900'
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop 
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+set $WS1  "1: "
+set $WS2  "2: "
+set $WS3  "3:  "
+set $WS4  "4: "
+set $WS5  "5: "
+set $WS6  "6: "
+set $WS7  "7:  "
+set $WS8  "8:  "
+set $WS9  "9: "
+set $WS10 "10: "
+
+# switch to workspace
+bindsym $mod+1 workspace $WS1
+bindsym $mod+2 workspace $WS2
+bindsym $mod+3 workspace $WS3
+bindsym $mod+4 workspace $WS4
+bindsym $mod+5 workspace $WS5
+bindsym $mod+6 workspace $WS6
+bindsym $mod+7 workspace $WS7
+bindsym $mod+8 workspace $WS8
+bindsym $mod+9 workspace $WS9
+bindsym $mod+0 workspace $WS10
+
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $WS1
+bindsym $mod+Shift+2 move container to workspace $WS2
+bindsym $mod+Shift+3 move container to workspace $WS3
+bindsym $mod+Shift+4 move container to workspace $WS4
+bindsym $mod+Shift+5 move container to workspace $WS5
+bindsym $mod+Shift+6 move container to workspace $WS6
+bindsym $mod+Shift+7 move container to workspace $WS7
+bindsym $mod+Shift+8 move container to workspace $WS8
+bindsym $mod+Shift+9 move container to workspace $WS9
+bindsym $mod+Shift+0 move container to workspace $WS10
+
+# move workspace to output
+bindsym $mod+Shift+greater move workspace to output right
+bindsym $mod+Shift+less move workspace to output left
+
+# auto move containers to workspaces
+# use `xprop` to identify window properties
+assign [class="XTerm|konsole|URxvt"] → $WS1
+assign [class="Firefox|Chromium"] → $WS2
+assign [class="KeePass2|Keepassx2|keepassx" window_type=normal] → $WS3
+assign [class="Thunderbird"] → $WS4
+assign [class="Skype"] → $WS6
+assign [class="Nautilus|Thunar|Pcmanfm"] → $WS9
+assign [class="Clementine-qt5|Cantata"] → $WS10
+
+for_window [window_type=dialog] resize grow width 270 px or 18 ppt
+for_window [window_type=dialog] resize grow height 50 px
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Set wallpaper
+exec_always --no-startup-id ~/.i3/i3-wallpaper.sh
+
+# Brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight +5
+bindsym XF86MonBrightnessDown exec xbacklight -4
+
+# Pulse Audio controls
+set $pasink 1
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $pasink +5% && killall -SIGUSR1 i3status #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $pasink -5% && killall -SIGUSR1 i3status #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $pasink toggle # mute sound
+
+# Touchpad controls
+bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# External Display
+# bindsym $mod+p exec xrandr --output DP1 --auto --right-of eDP1 && exec --no-startup-id feh --bg-scale '/home/avmo/.kde4/share/wallpapers/wallhaven-69690.jpg'
+
+# set $Locker i3lock && sleep 1
+set $Locker ~/.i3/i3lock-wrapper && sleep 1
+# Power manager
+set $mode_sys System (l)ock (s)uspend hy(b)rid-sleep (h)ibernate (r)estart shut(d)own 
+mode "$mode_sys" {
+        bindsym l exec --no-startup-id $Locker, mode "default"
+        bindsym s exec --no-startup-id $Locker && systemctl suspend; mode "default"
+        bindsym b exec --no-startup-id $Locker && systemctl hybrid-sleep; mode "default"
+        bindsym h exec --no-startup-id $Locker && systemctl hibernate; mode "default"
+        bindsym r exec --no-startup-id reboot; mode "default"
+        bindsym d exec --no-startup-id shutdown -h now; mode "default"
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+n mode "$mode_sys"
+
+# Colors
+
+  set $base00 #101218
+  set $base01 #1f222d
+  set $base02 #252936
+  set $base03 #7780a1
+  set $base04 #C0C5CE
+  set $base05 #d1d4e0
+  set $base06 #C9CCDB
+  set $base07 #ffffff
+  set $base08 #ee829f
+  set $base09 #f99170
+  set $base0A #ffefcc
+  set $base0B #a5ffe1
+  set $base0C #97e0ff
+  set $base0D #97bbf7
+  set $base0E #c0b7f9
+  set $base0F #fcc09e
+
+# Window Colours
+#                         border  background text    indicator
+  client.focused          $base01 $base01    $base07 $base0F
+  client.focused_inactive $base02 $base02    $base03 $base0F
+  client.unfocused        $base02 $base02    $base03 $base0F
+  client.urgent $base02 $base08 $base00 $base0F
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+# bar {
+#         #status_command i3status
+#         status_command $HOME/.i3/conky-i3bar
+#         font pango:Source Sans Pro, Icons 8
+#         colors {
+#           separator $base03
+#           background $base01
+#           statusline $base05
+#     #                        border  background text
+#           focused_workspace  $base01 $base01    $base07
+#           active_workspace   $base01 $base02    $base03
+#           inactive_workspace $base01 $base01    $base03
+#           urgent_workspace   $base01 $base01    $base08
+#     }
+# }
+
+bar {
+    i3bar_command ~/.i3/lemonbar/i3_lemonbar.sh
+}
+
+# Auto start applications
+exec compton
+exec urxvt
+exec firefox
+# exec chromium
+exec keepassxc --platformtheme qt5ct
+exec nm-applet
+exec thunderbird
+# exec pcmanfm
+exec thunar
+exec mpd
+exec cantata

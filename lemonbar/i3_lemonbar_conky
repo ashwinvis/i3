@@ -1,0 +1,30 @@
+conky.config = {
+-- Conky for external bar
+
+	background = false,
+	update_interval = 2,
+	total_run_times = 0,
+	override_utf8_locale = true,
+	short_units = true,
+	uppercase = false,
+	out_to_console = true,
+	out_to_x = false,
+	if_up_strictness = 'address',
+	format_human_readable = true,
+	use_xft = true,
+	font = 'DejaVu Sans Mono:size=9',
+
+};
+
+conky.text = [[
+SYS\
+${time %a %d %b %H:%M} \
+${cpu} \
+${mem} \
+${fs_used_perc /} \
+${fs_used_perc /home} \
+${if_up wlp2s0}${downspeedf wlp2s0} ${upspeedf wlp2s0} \
+${else}down down${endif} \
+${if_up enp0s20u1}${downspeedf enp0s20u1} ${upspeedf enp0s20u1} \
+${else}down down${endif}\
+]];
