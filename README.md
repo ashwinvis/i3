@@ -1,5 +1,4 @@
-# E7 dotfiles
-Config files for a minimalist X desktop; i3wm & lemonbar, rxvt, bitlbee & weechat, vim, git, cnmpcpp...
+# ashwinvis/i3 
 
 ## Courtesy
 
