@@ -69,12 +69,12 @@ while read -r line ; do
                                                       uptime="%{F${color_head}}${sep_left}%{F${color_back} B${color_head}} ${sys_arr[12]} %{F- B-}"
       bat_mode=${sys_arr[14]}
       bat_val=${sys_arr[15]%\%}
-      if [ "${bat_mode}" == "bat" ]; then
-        bat_cback=${color_sec_b2}; bat_cicon=${color_disable}; bat_cfore=${color_disable};
+      if [ "${bat_mode}" == "BAT" ]; then
+        bat_cback=${color_sec_b2}; bat_cicon=${color_disable}; bat_cfore=${color_fore};
       else
-        bat_cback=${color_sec_b2}; bat_cicon=${color_icon}; bat_cfore=${color_fore};
+        bat_cback=${color_head}; bat_cicon=${color_back}; bat_cfore=${color_disable};
       fi
-      if [ "${bat_mode}" == "pow" ]; then
+      if [ "${bat_mode}" == "POW" ]; then
             icon_bat=$icon_pow
       else
           if [ "${bat_val}" -lt "25" ]; then
