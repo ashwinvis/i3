@@ -38,19 +38,19 @@ cnt_mpd=${upd_mpd}
 while :; do
 
   # Volume, "VOL"
-  if [ $((cnt_vol++)) -ge ${upd_vol} ]; then
+  if [ $((cnt_vol++)) -ge ${upd_vol} ] && $tgl_vol; then
     amixer get Master | grep "${snd_cha}" | awk -F'[]%[]' '/%/ {if ($7 == "off") {print "VOL×\n"} else {printf "VOL%d%%%%\n", $2}}' > "${panel_fifo}" &
     cnt_vol=0
   fi
 
   # GMAIL, "GMA"
-  if [ $((cnt_mail++)) -ge ${upd_mail} ]; then
+  if [ $((cnt_mail++)) -ge ${upd_mail} ] && $tgl_mail; then
     [ -f ~/bin/gmail.sh ] && printf "%s%s\n" "GMA" "$(~/bin/gmail.sh)" > "${panel_fifo}"
     cnt_mail=0
   fi
 
   # MPD
-  if [ $((cnt_mpd++)) -ge ${upd_mpd} ]; then
+  if [ $((cnt_mpd++)) -ge ${upd_mpd} ] && $tgl_mpd; then
     #printf "%s%s\n" "MPD" "$(ncmpcpp --now-playing '{%a - %t}|{%f}' | head -c 60)" > "${panel_fifo}"
     printf "%s%s\n" "MPD" "$(mpc current -f '[[%artist% - ]%title%]|[%file%]' 2>&1 | head -c 70)" > "${panel_fifo}"
     cnt_mpd=0
@@ -64,7 +64,7 @@ done &
 #### LOOP FIFO
 
 cat "${panel_fifo}" | $(dirname $0)/i3_lemonbar_parser.sh \
-  | lemonbar -p -f "${font}" -f "${iconfont}" -g "${geometry}" -B "${color_back}" -F "${color_fore}" &
+  | lemonbar -p -f "${font}" -f "${iconfont}" -g "${geometry}" -B "${color_back}" -F "${color_fore}" | sh &
 
 wait
 

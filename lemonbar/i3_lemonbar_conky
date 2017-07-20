@@ -26,5 +26,8 @@ ${fs_used_perc /home} \
 ${if_up wlp2s0}${downspeedf wlp2s0} ${upspeedf wlp2s0} \
 ${else}down down${endif} \
 ${if_up enp0s20u1}${downspeedf enp0s20u1} ${upspeedf enp0s20u1} \
-${else}down down${endif}\
+${else}down down${endif} \
+"${uptime_short}" \
+${if_existing /sys/class/power_supply/AC/online 0}BAT ${battery_percent}% \
+${else}POW ${battery_percent}${endif} \
 ]];

@@ -2,17 +2,24 @@
 # i3 panel config. Powerline style.
 
 panel_fifo="/tmp/i3_lemonbar_${USER}"
-geometry="x32"
-# font="DejaVu Sans Mono for Powerline:size=10"
-font="xos4 Terminess Powerline:size=10"
-#iconfont="Terminusicons2Mono:size=10"
-iconfont="FontAwesome:size=10"
+geometry="x34"
+size=12
+#font="DejaVu Sans Mono for Powerline:size=$size"
+font="Inconsolata for Powerline:size=$size"
+#font="xos4 Terminess Powerline:size=$size"
+#iconfont="Terminusicons2Mono:size=$size"
+iconfont="FontAwesome:size=$size"
 res_w=$(xrandr | grep "current" | awk '{print $8a}')
 snd_cha=$(amixer get Master | grep "Playback channels:" | awk '{if ($4 == "") {printf "%s: Playback", $3} else {printf "%s %s: Playback", $3, $4}}')
 
 # Alarm settings
 cpu_alert=75                        # % cpu use
 net_alert=5                         # K net use
+
+# toggle lemonbar elements
+tgl_vol=true
+tgl_mail=false
+tgl_mpd=false
 
 # update setting, in seconds (conky update in i3_lemonbar_conky
 upd_vol=3                           # Volume update
@@ -33,6 +40,7 @@ color_cpu="#FF5F819D"               # Background color for cpu alert
 color_net="#FF5E8D87"               # Background color for net alert
 color_disable="#FF1D1F21"           # Foreground for disable elements
 color_wsp="#FF8C9440"               # Background for selected workspace
+color_alert="#990000"               # Foreground for alert
 
 #default space between sections
 if [ ${res_w} -gt 1024 ]; then
@@ -79,4 +87,9 @@ icon_music=""                      # Music icon
 icon_prog=""                       # Window icon
 icon_contact=""                    # Contact icon
 icon_wsp=""                        # Workspace icon
+icon_bat1=" "                      # Power icons
+icon_bat2=" "
+icon_bat3=" "
+icon_bat4=" "
+icon_pow=""
 fi

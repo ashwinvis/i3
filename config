@@ -21,6 +21,9 @@ set $mod Mod4
 font pango: Source Sans Pro 9
 # xrandr --dpi 192
 
+# Hide title bar
+new_window 1pixel
+
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -149,7 +152,7 @@ assign [class="KeePass2|Keepassx2|keepassx" window_type=normal] → $WS3
 assign [class="Thunderbird"] → $WS4
 assign [class="Skype"] → $WS6
 assign [class="Nautilus|Thunar|Pcmanfm"] → $WS9
-assign [class="Clementine-qt5|Cantata"] → $WS10
+assign [class="Clementine-qt5|cantata"] → $WS10
 
 for_window [window_type=dialog] resize grow width 270 px or 18 ppt
 for_window [window_type=dialog] resize grow height 50 px
@@ -278,6 +281,7 @@ bar {
 }
 
 # Auto start applications
+exec_always --no-startup-id ~/.i3/i3-shutdown.py
 exec compton
 exec urxvt
 exec firefox
@@ -285,7 +289,7 @@ exec firefox
 exec keepassxc --platformtheme qt5ct
 exec nm-applet
 exec thunderbird
-# exec pcmanfm
-exec thunar
-exec mpd
+exec pcmanfm
+# exec thunar
+# exec mpd
 exec cantata

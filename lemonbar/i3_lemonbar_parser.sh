@@ -31,13 +31,13 @@ while read -r line ; do
       else
         cpu_cback=${color_sec_b2}; cpu_cicon=${color_icon}; cpu_cfore=${color_fore};
       fi
-      cpu="%{F${cpu_cback}}${sep_left}%{F${cpu_cicon} B${cpu_cback}} %{T2}${icon_cpu}%{F${cpu_cfore} T1} ${sys_arr[4]}%%"
+      cpu="%{F${cpu_cback}}${sep_left}%{F${cpu_cicon} B${cpu_cback}} %{T2}${icon_cpu}%{F${cpu_cfore} T1} ${sys_arr[4]}%"
       # mem
       mem="%{F${cpu_cicon}}${sep_l_left} %{T2}${icon_mem}%{F${cpu_cfore} T1} ${sys_arr[5]}"
       # disk /
-      diskr="%{F${color_sec_b1}}${sep_left}%{F${color_icon} B${color_sec_b1}} %{T2}${icon_hd}%{F- T1} ${sys_arr[6]}%%"
+      diskr="%{F${color_sec_b1}}${sep_left}%{F${color_icon} B${color_sec_b1}} %{T2}${icon_hd}%{F- T1} ${sys_arr[6]}%"
       # disk home
-      diskh="%{F${color_icon}}${sep_l_left} %{T2}${icon_home}%{F- T1} ${sys_arr[7]}%%"
+      diskh="%{F${color_icon}}${sep_l_left} %{T2}${icon_home}%{F- T1} ${sys_arr[7]}%"
       # wlan
       if [ "${sys_arr[8]}" == "down" ]; then
         wland_v="×"; wlanu_v="×";
@@ -66,6 +66,28 @@ while read -r line ; do
       fi
       ethd="%{F${eth_cback}}${sep_left}%{F${eth_cicon} B${eth_cback}} %{T2}${icon_dl}%{F${eth_cfore} T1} ${ethd_v}"
       ethu="%{F${eth_cicon}}${sep_l_left} %{T2}${icon_ul}%{F${eth_cfore} T1} ${ethu_v}"
+                                                      uptime="%{F${color_head}}${sep_left}%{F${color_back} B${color_head}} ${sys_arr[12]} %{F- B-}"
+      bat_mode=${sys_arr[14]}
+      bat_val=${sys_arr[15]%\%}
+      if [ "${bat_mode}" == "bat" ]; then
+        bat_cback=${color_sec_b2}; bat_cicon=${color_disable}; bat_cfore=${color_disable};
+      else
+        bat_cback=${color_sec_b2}; bat_cicon=${color_icon}; bat_cfore=${color_fore};
+      fi
+      if [ "${bat_mode}" == "pow" ]; then
+            icon_bat=$icon_pow
+      else
+          if [ "${bat_val}" -lt "25" ]; then
+            icon_bat=$icon_bat1
+          elif [ "${bat_val}" -lt "50" ]; then
+            icon_bat=$icon_bat2
+          elif [ "${bat_val}" -lt "75" ]; then
+            icon_bat=$icon_bat3
+          else
+            icon_bat=$icon_bat4
+          fi
+      fi
+      battery="%{F${bat_cback}}${sep_left}%{F${bat_cicon} B${bat_cback}} %{T2}${icon_bat}%{F${bat_cfore} T1} ${bat_val}%"
       ;;
     VOL*)
       # Volume
@@ -113,9 +135,12 @@ while read -r line ; do
          FOC*)
            wsp="${wsp}%{F${color_head} B${color_wsp}}${sep_right}%{F${color_back} B${color_wsp} T1} ${1#???} %{F${color_wsp} B${color_head}}${sep_right}"
            ;;
-         INA*|URG*|ACT*)
+         INA*)
            wsp="${wsp}%{F${color_disable} T1} ${1#???} "
            ;;
+         URG*|ACT*)
+           wsp="${wsp}%{F${color_alert} T1} ${1#???} "
+           # wsp="${wsp}%{F${color_head} B${color_wsp}}${sep_right}%{F${color_alert} B${color_wsp} T1} ${1#???} %{F${color_wsp} B${color_head}}${sep_right}"
         esac
         shift
       done
@@ -129,6 +154,6 @@ while read -r line ; do
   esac
 
   # And finally, output
-  printf "%s\n" "%{l}${wsp}${title} %{r}${mpd}${stab}${irc}${stab}${gmail}${stab}${cpu}${stab}${mem}${stab}${diskr}${stab}${diskh}${stab}${wland}${stab}${wlanu}${stab}${ethd}${stab}${ethu}${stab}${vol}${stab}${date}${stab}${time}"
+  printf "%s\n" "%{l}${wsp}${title} %{r}${mpd}${stab}${irc}${stab}${gmail}${stab}${cpu}${stab}${mem}${stab}${diskr}${stab}${diskh}${stab}${wland}${stab}${wlanu}${stab}${ethd}${stab}${ethu}${stab}${vol}${stab}${battery}${stab}${date}${stab}${time}"
   #printf "%s\n" "%{l}${wsp}${title}"
 done

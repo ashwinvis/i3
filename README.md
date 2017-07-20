@@ -6,7 +6,7 @@
 
  - [electro7/dotfiles](https://github.com/electro7/dotfiles)
 
- - [ktmud/bing-wallpaper](https://github.com/ktmud/bing-wallpaper)
+ - [marguerite/linux-bing-wallpaper](https://github.com/marguerite/linux-bing-wallpaper)
 
 ## i3
 
