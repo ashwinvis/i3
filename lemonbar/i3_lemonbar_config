@@ -87,9 +87,9 @@ icon_music=""                      # Music icon
 icon_prog=""                       # Window icon
 icon_contact=""                    # Contact icon
 icon_wsp=""                        # Workspace icon
-icon_bat1=" "                      # Power icons
-icon_bat2=" "
-icon_bat3=" "
-icon_bat4=" "
+icon_bat1=""                      # Power icons
+icon_bat2=""
+icon_bat3=""
+icon_bat4=""
 icon_pow=""
 fi

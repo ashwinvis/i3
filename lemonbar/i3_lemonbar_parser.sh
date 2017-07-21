@@ -70,7 +70,7 @@ while read -r line ; do
       bat_mode=${sys_arr[14]}
       bat_val=${sys_arr[15]%\%}
       if [ "${bat_mode}" == "BAT" ]; then
-        bat_cback=${color_sec_b2}; bat_cicon=${color_disable}; bat_cfore=${color_fore};
+        bat_cback=${color_sec_b2}; bat_cicon=${color_icon}; bat_cfore=${color_fore};
       else
         bat_cback=${color_head}; bat_cicon=${color_back}; bat_cfore=${color_disable};
       fi

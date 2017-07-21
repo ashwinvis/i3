@@ -10,7 +10,7 @@
 
 ## i3
 
-![lemonbar full](https://av.mooo.info/nextcloud/index.php/s/8T6v2dwpFa61AW3/download)
+![lemonbar full](https://av.mooo.info/nextcloud/index.php/s/62LlOYDPGqqXNut/download)
 
 Lemonbar config files and help [here](https://github.com/ashwinvis/i3/tree/master/.i3/lemonbar)
 

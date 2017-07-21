@@ -154,8 +154,9 @@ assign [class="Skype"] → $WS6
 assign [class="Nautilus|Thunar|Pcmanfm"] → $WS9
 assign [class="Clementine-qt5|cantata"] → $WS10
 
-for_window [window_type=dialog] resize grow width 270 px or 18 ppt
-for_window [window_type=dialog] resize grow height 50 px
+# if dialog windows are too small 
+# for_window [window_type=dialog] resize grow width 270 px or 18 ppt
+# for_window [window_type=dialog] resize grow height 50 px
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
