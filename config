@@ -195,6 +195,7 @@ bindsym $mod+r mode "resize"
 exec_always --no-startup-id ~/.i3/i3-wallpaper.sh
 
 # Brightness controls
+# replace xorg-backlight with acpilight+udev rule in case of modesetting driver
 bindsym XF86MonBrightnessUp exec xbacklight +5
 bindsym XF86MonBrightnessDown exec xbacklight -4
 
