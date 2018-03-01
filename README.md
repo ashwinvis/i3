@@ -45,6 +45,11 @@ Lemonbar config files and help [here](https://github.com/ashwinvis/i3/tree/maste
     $ pacaur -S lemonbar-xft-git
     ```
 
+* Install wallpaper-reddit:
+
+    ```sh
+    pip install --user -e https://github.com/ashwinvis/wallpaper-reddit.git
+    ```
 
 #### Debian jessie 8.5:
 *Installation instructions by @electro7: May be incomplete*
