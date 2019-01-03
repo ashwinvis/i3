@@ -108,10 +108,10 @@ set $WS3  "3: "
 set $WS4  "4:"
 set $WS5  "5:"
 set $WS6  "6:"
-set $WS7  "7:"
-set $WS8  "8:"
+set $WS7  "7:"
+set $WS8  "8:"
 set $WS9  "9:"
-set $WS10 "10:"
+set $WS10 "10:"
 
 # switch to workspace
 bindsym $mod+1 workspace $WS1
@@ -150,7 +150,11 @@ assign [class="XTerm|konsole|URxvt"] → $WS1
 assign [class="Firefox|Chromium"] → $WS2
 assign [class="KeePass2|Keepassx2|keepassx" window_type=normal] → $WS3
 assign [class="Thunderbird"] → $WS4
+assign [title="Zotero"] → $WS5
 assign [class="Skype"] → $WS6
+assign [title="Fractal"] → $WS6
+assign [class="zeal"] → $WS8
+assign [class="code - oss"] → $WS8
 assign [class="Nautilus|Thunar|Pcmanfm"] → $WS9
 assign [class="Clementine-qt5|cantata"] → $WS10
 
@@ -260,12 +264,12 @@ bindsym $mod+n mode "$mode_sys"
   client.unfocused        $base02 $base02    $base03 $base0F
   client.urgent $base02 $base08 $base00 $base0F
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+## bar: i3status / conky config
 # bar {
 #         #status_command i3status
 #         status_command $HOME/.i3/conky-i3bar
 #         font pango:Source Sans Pro, Icons 8
+#         # font pango:Noto Sans, Icons 8
 #         colors {
 #           separator $base03
 #           background $base01
@@ -278,20 +282,31 @@ bindsym $mod+n mode "$mode_sys"
 #     }
 # }
 
-bar {
-    i3bar_command ~/.i3/lemonbar/i3_lemonbar.sh
-}
+# bar {
+#     i3bar_command ~/.i3/lemonbar/i3_lemonbar.sh
+# }
+# exec_always --no-startup-id ~/.i3/i3-shutdown.py
+
+# i3-gaps configurations start here
+gaps inner 5
+gaps outer 2
+# smart_gaps on
+
 
 # Auto start applications
-exec_always --no-startup-id ~/.i3/i3-shutdown.py
+exec_always python ~/.local/bin/wallpaper-reddit -f
+
 exec compton
+exec volumeicon
+
 exec urxvt
 exec firefox
-# exec chromium
+# exec firefox-developer-edition
 exec keepassxc --platformtheme qt5ct
 exec nm-applet
 exec thunderbird
+exec fractal
 exec pcmanfm
-# exec thunar
-# exec mpd
 exec cantata
+
+exec tint2
