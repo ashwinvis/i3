@@ -37,7 +37,10 @@ floating_modifier $mod
 floating_maximum_size -1 x -1
 
 # start a terminal
-bindsym $mod+Return exec urxvt && cwd
+# bindsym $mod+Return exec urxvt && cwd
+# bindsym $mod+Return exec termite
+bindsym $mod+Return exec WINIT_HIDPI_FACTOR=2 alacritty
+
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -153,6 +156,7 @@ assign [class="Thunderbird"] → $WS4
 assign [title="Zotero"] → $WS5
 assign [class="Skype"] → $WS6
 assign [title="Fractal"] → $WS6
+assign [class="Riot"] → $WS6
 assign [class="zeal"] → $WS8
 assign [class="code - oss"] → $WS8
 assign [class="Nautilus|Thunar|Pcmanfm"] → $WS9
@@ -283,7 +287,8 @@ bindsym $mod+n mode "$mode_sys"
 # }
 
 # bar {
-#     i3bar_command ~/.i3/lemonbar/i3_lemonbar.sh
+    # i3bar_command ~/.i3/lemonbar/i3_lemonbar.sh
+    # i3bar_command polybar example
 # }
 # exec_always --no-startup-id ~/.i3/i3-shutdown.py
 
@@ -294,19 +299,23 @@ gaps outer 2
 
 
 # Auto start applications
-exec_always python ~/.local/bin/wallpaper-reddit -f
+exec_always python /home/avmo/.local/bin/wallpaper-reddit -f
 
-exec compton
+# exec compton
 exec volumeicon
 
-exec urxvt
+# exec urxvt
+exec WINIT_HIDPI_FACTOR=2 alacritty
 exec firefox
 # exec firefox-developer-edition
 exec keepassxc --platformtheme qt5ct
 exec nm-applet
 exec thunderbird
-exec fractal
-exec pcmanfm
-exec cantata
+# exec fractal
+exec riot-desktop
+# exec pcmanfm
+exec thunar
+# exec cantata
 
-exec tint2
+# exec tint2
+exec polybar example
