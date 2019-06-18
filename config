@@ -299,7 +299,7 @@ gaps outer 2
 
 
 # Auto start applications
-exec_always python /home/avmo/.local/bin/wallpaper-reddit -f
+exec_always ~/.local/pipx/venvs/wallpaper-reddit/bin/python ~/.local/bin/wallpaper-reddit -f
 
 # exec compton
 exec volumeicon
