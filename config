@@ -295,8 +295,9 @@ bindsym $mod+n mode "$mode_sys"
 # i3-gaps configurations start here
 gaps inner 5
 gaps outer 2
-# smart_gaps on
-
+smart_gaps on
+smart_borders on
+# i3-gaps configuration ends here
 
 # Auto start applications
 exec_always ~/.local/pipx/venvs/wallpaper-reddit/bin/python ~/.local/bin/wallpaper-reddit -f
