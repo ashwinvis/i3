@@ -47,13 +47,13 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run -i -b -p '#!' -fn 'DejaVu Sans Mono for Powerline 8'
-bindsym $mod+d exec rofi -show drun 
-bindsym $mod+Alt+d exec rofi -show drun 
+bindsym $mod+d exec rofi -show drun
+bindsym $mod+Alt+d exec rofi -show drun
 # dmenu_run -i -b -p 'Arch Linux' -fn 'Oxygen Sans:pixelsize=28' -nb '#fdf6e3' -nf '#586c75' -sf '#fdf6e3' -sb '#b58900'
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop 
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+j focus left
@@ -107,7 +107,7 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 set $WS1  "1:"
 set $WS2  "2:"
-set $WS3  "3: "
+set $WS3  "3:"
 set $WS4  "4:"
 set $WS5  "5:"
 set $WS6  "6:"
@@ -149,20 +149,19 @@ bindsym $mod+Shift+less move workspace to output left
 
 # auto move containers to workspaces
 # use `xprop` to identify window properties
-assign [class="XTerm|konsole|URxvt"] → $WS1
-assign [class="Firefox|Chromium"] → $WS2
-assign [class="KeePass2|Keepassx2|keepassx" window_type=normal] → $WS3
+assign [class="XTerm|konsole|URxvt|Alacritty"] → $WS1
+assign [class="firefox|Firefox|Chromium"] → $WS2
+assign [class="KeePass2|Keepassx2|keepassx|keepassxc" window_type=normal] → $WS3
 assign [class="Thunderbird"] → $WS4
 assign [title="Zotero"] → $WS5
-assign [class="Skype"] → $WS6
 assign [title="Fractal"] → $WS6
-assign [class="Riot"] → $WS6
+assign [class="Riot|Skype"] → $WS6
 assign [class="zeal"] → $WS8
 assign [class="code - oss"] → $WS8
-assign [class="Nautilus|Thunar|Pcmanfm"] → $WS9
-assign [class="Clementine-qt5|cantata"] → $WS10
+assign [class="Nautilus|Thunar|Pcmanfm|dolphin"] → $WS9
+assign [class="Clementine-qt5|cantata|mpv|Pavucontrol"] → $WS10
 
-# if dialog windows are too small 
+# if dialog windows are too small
 # for_window [window_type=dialog] resize grow width 270 px or 18 ppt
 # for_window [window_type=dialog] resize grow height 50 px
 
@@ -228,7 +227,7 @@ bindsym XF86AudioPrev exec playerctl previous
 # set $Locker i3lock && sleep 1
 set $Locker ~/.i3/i3lock-wrapper && sleep 1
 # Power manager
-set $mode_sys System (l)ock (s)uspend hy(b)rid-sleep (h)ibernate (r)estart shut(d)own 
+set $mode_sys System (l)ock (s)uspend hy(b)rid-sleep (h)ibernate (r)estart shut(d)own
 mode "$mode_sys" {
         bindsym l exec --no-startup-id $Locker, mode "default"
         bindsym s exec --no-startup-id $Locker && systemctl suspend; mode "default"
