@@ -308,7 +308,7 @@ exec volumeicon
 exec WINIT_HIDPI_FACTOR=2 alacritty
 exec firefox
 # exec firefox-developer-edition
-exec keepassxc --platformtheme qt5ct
+exec keepassxc
 exec nm-applet
 exec thunderbird
 # exec fractal
